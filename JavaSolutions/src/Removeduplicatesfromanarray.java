@@ -14,7 +14,11 @@ public class Removeduplicatesfromanarray {
     }
     public static void main(String[] args) {
     System.out.println(Removeduplicatesfromanarray.RemoveDuplicate(
+<<<<<<< HEAD
             new int [] {1,1,2,3,3,4,5,5,5}));
+=======
+            new int [] {1,1,2,3,3,4,5}));
+>>>>>>> dev
     }
 }
 
