@@ -1,7 +1,7 @@
 import com.sun.source.doctree.SystemPropertyTree;
 
 public class Palindrome {
-    public static boolean getPalindrome(String val) {
+    public static boolean isPalindrome(String val) {
         int i=0;
         int j= val.length()-1;
         while(i < j) {
@@ -13,7 +13,7 @@ public class Palindrome {
         return true;
     }
     public static void main(String[] args) {
-        if(Palindrome.getPalindrome("pg")){
+        if(Palindrome.isPalindrome("pg")){
             System.out.println("Palindrome");
         } else {
             System.out.println("Not Palindrome");
