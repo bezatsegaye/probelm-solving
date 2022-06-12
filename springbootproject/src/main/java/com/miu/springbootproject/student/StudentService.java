@@ -3,8 +3,6 @@ package com.miu.springbootproject.student;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,7 +32,7 @@ public class StudentService {
     public void addStudent(Student student) {
         Optional<Student> studentByEmail = Optional.ofNullable(studentRepository.findStudentByEmail(student.getEmail())
                         .orElse(null));
-        if(studentByEmail.isPresent()){
+        if(studentByEmail.isPresent()) {
             throw new IllegalStateException();
         }
         studentRepository.save(student);
