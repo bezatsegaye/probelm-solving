@@ -1,0 +1,21 @@
+Add
+<table>
+    <thead>    
+        <th>No.</th>  
+        <th>First Name</th>
+        <th>Last Name</th>  
+        <th>Age</th>
+        <th>Email</th>
+        <th>Edit | Delete</th>
+    </thead>
+    <tbody>     
+        <tr *ngFor = "let stud of student">   
+            <td>{{stud.id}}</td>  
+            <td>{{stud.firstName}}</td> 
+            <td>{{stud.lastName}}</td>  
+            <td>{{stud.email}}</td> 
+            <td>{{stud.age}}</td>   
+            <td>Edit | Delete</td>
+        </tr>
+    </tbody>
+</table>
