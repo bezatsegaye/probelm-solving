@@ -16,4 +16,20 @@ export class StudentService {
   getStudent() : Observable<any> {
     return this.http.get(this.url);
   }
+
+  getStudentById(id: number): Observable<any> {
+    return this.http.get(`${this.url}/${id}`);
+  }
+
+  saveStudent(student: Student): Observable<any> {
+   return this.http.post(this.url,student);
+  }
+
+  updateStudent(student: Student): Observable<any> {
+    return this.http.put(this.url, student);
+  }
+
+  deleteStudent(id: string): Observable<any> {
+    return this.http.delete(this.url + "/" + id)
+  }
 }

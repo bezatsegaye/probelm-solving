@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Student } from '../model/student.model';
 import { StudentService } from '../services/student.service';
 
@@ -9,7 +10,8 @@ import { StudentService } from '../services/student.service';
 })
 export class StudentComponent implements OnInit {
 
-  constructor(private studentService: StudentService) { }
+  constructor(private studentService: StudentService,
+    private router: Router) { }
 
   student: Student[];
   errorMessage: any;
@@ -22,6 +24,19 @@ export class StudentComponent implements OnInit {
       console.log("Failed");
       this.errorMessage = error;
     })
+  }
+
+  deleteStudent(id: string) {
+    this.studentService.deleteStudent(id).subscribe ((response) => {
+      console.log("Sucess" + response);
+    },
+    (error) => {
+      console.log("Error" + error);
+    })
+  }
+
+  updateStudent(id: string) {
+    this.router.navigate(['/add', id]);
   }
 
 

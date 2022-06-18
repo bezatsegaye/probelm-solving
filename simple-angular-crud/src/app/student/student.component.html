@@ -1,4 +1,4 @@
-Add
+<a routerLink="/add" routerLinkActive="active">Add Student</a>
 <table>
     <thead>    
         <th>No.</th>  
@@ -8,14 +8,15 @@ Add
         <th>Email</th>
         <th>Edit | Delete</th>
     </thead>
-    <tbody>     
+    <tbody>      
         <tr *ngFor = "let stud of student">   
             <td>{{stud.id}}</td>  
             <td>{{stud.firstName}}</td> 
             <td>{{stud.lastName}}</td>  
             <td>{{stud.email}}</td> 
             <td>{{stud.age}}</td>   
-            <td>Edit | Delete</td>
+            <td><button (click)="updateStudent(stud.id)"> Edit </button> | <button (click)="deleteStudent(stud.id)"> Delete</button> 
+                <a [routerLink]="['/add', stud.id]"> Edit </a> </td>
         </tr>
     </tbody>
 </table>

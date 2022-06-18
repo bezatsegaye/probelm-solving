@@ -1,1 +1,20 @@
-<p>updatestudent works!</p>
+<div *ngIf="this.id; else add">
+    <p >Update Student</p>
+  </div>
+  
+  <ng-template #add>
+    <p >Add Student</p>
+  </ng-template>
+  
+<form (ngSubmit) = "onClickSave()">
+
+    <label>First Name:</label>
+    <input type="text"  name="firstName" [(ngModel)] = "student.firstName" placeholder="First Name"/><br>
+    <label>Last Name:</label>
+    <input type="text"  name="lastName" [(ngModel)] = "student.lastName" placeholder="Last Name"/><br>
+    <label>Email:</label>
+    <input type="text" name="email" [(ngModel)] = "student.email" placeholder="email"/><br>
+    <label>Age:</label>
+    <input type="text" name="age" [(ngModel)] = "student.age" placeholder="age"/><br>
+    <button type="submit">Submit</button>
+</form>
