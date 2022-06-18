@@ -3,6 +3,8 @@ package com.miu.springbootproject.student;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,28 +31,38 @@ public class StudentService {
         return studentRepository.findAll();
     }
 
-    public void addStudent(Student student) {
-        Optional<Student> studentByEmail = Optional.ofNullable(studentRepository.findStudentByEmail(student.getEmail())
-                        .orElse(null));
-        if(studentByEmail.isPresent()) {
-            throw new IllegalStateException();
+    public Student getStudentById(Long id) {
+        return this.studentRepository.findById(id).orElse(null);
+    }
+
+    public void update(Student student) {
+        if (student.getId() != null) {
+            Optional<Student> studentById = Optional.ofNullable(studentRepository.findById(student.getId())
+                    .orElse(null));
+            if (studentById.isPresent()) {
+                studentRepository.deleteById(student.getId());
+                studentRepository.save(student);
+            } else {
+                throw new IllegalStateException();
+            }
+        } else {
+            studentRepository.save(student);
         }
-        studentRepository.save(student);
     }
 
     public void deleteStudent(Long studentId) {
-     Boolean exist = studentRepository.existsById(studentId);
-     if(exist)
-        studentRepository.deleteById(studentId);
-     else
-         throw new IllegalStateException();
+        Boolean exist = studentRepository.existsById(studentId);
+        if(exist)
+            studentRepository.deleteById(studentId);
+        else
+            throw new IllegalStateException();
     }
 
     @Transactional
-    public void updateStudent(Long studentId, String firstName, String lastName) {
-    Student student = studentRepository.findById(studentId).orElseThrow(
-            () -> new IllegalStateException()
-    );
+    public void updateStudentWithStudnetAttribute(Long studentId, String firstName, String lastName) {
+        Student student = studentRepository.findById(studentId).orElseThrow(
+                () -> new IllegalStateException()
+        );
         student.setFirstName(firstName);
         student.setLastName(lastName);
     }

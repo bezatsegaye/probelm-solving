@@ -2,10 +2,12 @@ package com.miu.springbootproject.student;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
-@RestController
 @CrossOrigin(origins = "http://localhost:4200")
+@RestController
 @RequestMapping(value = "api/v1/student")
 public class StudentController {
 
@@ -20,20 +22,29 @@ public class StudentController {
         return studentService.getStudents();
     }
 
+    @GetMapping(path = "{studentId}")
+    public Student getStudentById(@PathVariable Long studentId) {
+        return studentService.getStudentById(studentId);
+    }
+
     @PostMapping
-    public void addStudent(@RequestBody Student student) {
-    studentService.addStudent(student);
+    public void addStudent(@RequestBody Student student) {studentService.update(student);
     }
 
     @DeleteMapping(path = "{studentId}")
     public void deleteStudent(@PathVariable Long studentId) {
-    studentService.deleteStudent(studentId);
+        studentService.deleteStudent(studentId);
     }
 
     @PutMapping(path = "{studentId}")
-    public void updateStudent(@PathVariable Long studentId,
-                              @RequestParam (required = false) String firstName,
-                              @RequestParam (required = false) String lastName) {
-        studentService.updateStudent(studentId, firstName, lastName);
+    public void updateStudentWithStudnetAttribute(@PathVariable Long studentId,
+                                                  @RequestParam (required = false) String firstName,
+                                                  @RequestParam (required = false) String lastName) {
+        studentService.updateStudentWithStudnetAttribute(studentId, firstName, lastName);
+    }
+
+    @PutMapping
+    public void updateStudent(@RequestBody Student student) {
+        studentService.update(student);
     }
 }
