@@ -1,8 +1,6 @@
 package com.miu.springbootproject.student;
 
-import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -30,7 +28,7 @@ public class StudentConfig implements CommandLineRunner {
                         "tseg@gmail.com",
                         LocalDate.of(2000, Month.JANUARY,12),
                         54));
-         studentRepository.saveAll(students);
+      //   studentRepository.saveAll(students);
     }
 
 //    @Bean
