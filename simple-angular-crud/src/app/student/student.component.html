@@ -17,6 +17,12 @@
             <td>{{stud.age}}</td>   
             <td><button (click)="updateStudent(stud.id)"> Edit </button> | <button (click)="deleteStudent(stud.id)"> Delete</button> 
                 <a [routerLink]="['/add', stud.id]"> Edit </a> </td>
+                <td><a
+                    [routerLink]="['/add']"
+                    [queryParams]="{ id: stud.id}"
+                  >
+                    Edit
+                  </a></td>
         </tr>
     </tbody>
 </table>
